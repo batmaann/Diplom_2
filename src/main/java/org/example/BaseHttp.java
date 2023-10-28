@@ -14,8 +14,17 @@ abstract public class BaseHttp {
         RequestSpecification request = given(baseRequest());
         request.body(body);
         return request.post(baseUrl).then();
-
     }
+
+
+    public ValidatableResponse doDeleteRequest(String baseUrl, String token) {
+        RequestSpecification request = given(baseRequest());
+        //request.body(body);
+        return request.given().auth().oauth2(token).delete(baseUrl).then();
+    }
+
+
+
 
     public ValidatableResponse doGetRequest(String baseUrl, Object body) {
         RequestSpecification request = given(baseRequest());

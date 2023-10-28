@@ -25,6 +25,7 @@ import static org.hamcrest.Matchers.everyItem;
 public class UserCreateTest {
 
     private final UserHttp userHttp = new UserHttp(BaseUrl.BASE_URL);
+
     static Random random = new Random();
 
 
