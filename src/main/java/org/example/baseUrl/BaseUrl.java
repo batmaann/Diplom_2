@@ -16,7 +16,6 @@ public class BaseUrl {
     public static final String GET_UPDATE_USER ="/api/auth/user";
 
 
-
-
-
+    public BaseUrl(String baseUrl) {
+    }
 }
