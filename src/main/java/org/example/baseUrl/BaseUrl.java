@@ -11,6 +11,7 @@ public class BaseUrl {
     public static final String GET_ORDER = "/api/orders";
     public static final String CANCEL_ORDER = "/api/v1/orders/cancel";
     public static final String PASSWORD_RESET = "/api/password-reset";
+    public static final String RESET_PASSWORD = "/api/password-reset/reset";
     public static final String LOGOUT_USER ="/api/auth/logout";
     public static final String AUTH_TOKEN ="/api/auth/token";
     public static final String GET_UPDATE_USER ="/api/auth/user";

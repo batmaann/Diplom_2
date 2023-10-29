@@ -26,7 +26,7 @@ abstract public class BaseHttp {
 
 
 
-    public ValidatableResponse doGetRequest(String baseUrl, Object body) {
+    public static ValidatableResponse doGetRequest(String baseUrl, Object body) {
         RequestSpecification request = given(baseRequest());
         request.body(body);
         return request.get(baseUrl).then();

@@ -72,8 +72,6 @@ public class UserLoginTest {
         token = token.replace("Bearer", "").trim();
         ValidatableResponse responseDelete = userHttp.deleteUser(token);
         assertThat(response.extract().statusCode(), equalTo(200));
-
-
     }
     @Test
     @DisplayName("Авторизация логин с неверным логином и паролем")

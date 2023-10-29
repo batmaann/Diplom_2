@@ -27,6 +27,10 @@ public class UserHttp extends BaseHttp {
         return doDeleteRequest(url + DELETE_USER, token);
     }
 
+    public ValidatableResponse editUser(String email){
+        return doPostRequest(url + PASSWORD_RESET, email);
+    }
+
 
 
 }
