@@ -23,18 +23,25 @@ abstract public class BaseHttp {
         return request.given().auth().oauth2(token).delete(baseUrl).then();
     }
 
-
-
-
-    public static ValidatableResponse doGetRequest(String baseUrl, Object body) {
+    public ValidatableResponse doGetRequest(String baseUrl) {
         RequestSpecification request = given(baseRequest());
-        request.body(body);
         return request.get(baseUrl).then();
+    }
+
+
+    public ValidatableResponse doGetRequestUser(String baseUrl, String email, String password, String name, String token) {
+        RequestSpecification request = given(baseRequest());
+        //request.body(body);
+        return request.given().auth().oauth2(token).get(baseUrl).then();
 
     }
 
 
-    private RequestSpecification baseRequest() {
+
+
+
+
+    private static RequestSpecification baseRequest() {
         return new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .addFilter(new RequestLoggingFilter())

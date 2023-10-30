@@ -16,13 +16,16 @@ public class OrdersHttp extends BaseHttp {
         url = baseurl;
     }
 
-    public ValidatableResponse getAllOrders(UserData UserData) {
-        return doGetRequest(url + GET_ALL_ORDERS, UserData);
+    public ValidatableResponse getAllOrders() {
+        return doGetRequest(url + GET_ALL_ORDERS);
     }
 
-    public ValidatableResponse getOrders(UserData UserData) {
-        return doGetRequest(url + GET_ORDER, UserData);
+
+    public ValidatableResponse getOrders(String email, String password, String name, String token) {
+        return doGetRequestUser(url + GET_ORDER, email, password, name, token);
     }
+
+
 
 
 }
