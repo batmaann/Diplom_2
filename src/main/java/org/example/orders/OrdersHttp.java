@@ -2,8 +2,8 @@ package org.example.orders;
 
 import io.restassured.response.ValidatableResponse;
 import org.example.BaseHttp;
-import org.example.User.UserData;
 
+import static org.example.baseUrl.BaseUrl.CREATE_ORDER;
 import static org.example.baseUrl.BaseUrl.GET_ALL_ORDERS;
 import static org.example.baseUrl.BaseUrl.GET_ORDER;
 
@@ -25,7 +25,9 @@ public class OrdersHttp extends BaseHttp {
         return doGetRequestUser(url + GET_ORDER, email, password, name, token);
     }
 
-
+    public ValidatableResponse postIngridient(IngredientData ingredientData, String token) {
+        return doPostRequest(url + CREATE_ORDER, ingredientData, token);
+    }
 
 
 }

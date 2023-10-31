@@ -9,9 +9,7 @@ import org.example.baseUrl.BaseUrl;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.emptyString;
 
 public class UserEditTest {
     private final UserHttp userHttp = new UserHttp(BaseUrl.BASE_URL);
@@ -29,30 +27,24 @@ public class UserEditTest {
         ValidatableResponse response = userHttp.createUser(request);
         ValidatableResponse responseAuth = userHttp.authUser(request);
 
-        String responseBody = responseAuth.extract().body().asString(); // Получаем тело ответа в виде строки
+        String responseBody = responseAuth.extract().body().asString();
         String responseEmail = responseAuth.extract().body().asString();
 
         String token = JsonPath.from(responseBody).get("accessToken");
         String emailBody = JsonPath.from(responseEmail).get("email");
 
         token = token.replace("Bearer", "").trim();
-        //Edit user
 
         ValidatableResponse responseEdit = userHttp.editUser(emailBody);
         responseAuth.assertThat()
                 .body("success", equalTo(true))
                 .body("message", equalTo("Reset email sent"));
 
-
-
-
-
         ValidatableResponse responseDelete = userHttp.deleteUser(token);
         assertThat(response.extract().statusCode(), equalTo(200));
 
 
     }
-
 
 
 }

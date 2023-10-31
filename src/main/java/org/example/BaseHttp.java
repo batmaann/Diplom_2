@@ -37,8 +37,11 @@ abstract public class BaseHttp {
     }
 
 
-
-
+    public ValidatableResponse doPostRequest(String baseUrl, Object body, String token) {
+        RequestSpecification request = given(baseRequest());
+        request.body(body);
+        return request.given().auth().oauth2(token).post(baseUrl).then();
+    }
 
 
     private static RequestSpecification baseRequest() {

@@ -23,8 +23,6 @@ public class UserLoginTest {
     private final String password;
     private final String name;
 
-
-
     public UserLoginTest(String email, String password, String name) {
         this.email = email;
         this.password = password;
@@ -41,9 +39,6 @@ public class UserLoginTest {
 
         };
     }
-
-
-
 
 
     @Test
@@ -67,12 +62,14 @@ public class UserLoginTest {
                 .body("user.email", not(emptyString()))
                 .body("user.email", equalTo(email))
                 .body("user.name", equalTo(name));
-        String responseBody = responseAuth.extract().body().asString(); // Получаем тело ответа в виде строки
-        String token = JsonPath.from(responseBody).get("accessToken"); // Извлекаем токен из JSON
+        String responseBody = responseAuth.extract().body().asString();
+        String token = JsonPath.from(responseBody).get("accessToken");
         token = token.replace("Bearer", "").trim();
         ValidatableResponse responseDelete = userHttp.deleteUser(token);
         assertThat(response.extract().statusCode(), equalTo(200));
+
     }
+
     @Test
     @DisplayName("Авторизация логин с неверным логином и паролем")
     @Description("авторизация если какого-то поля нет или пользователя, запрос возвращает ошибку;")
@@ -83,6 +80,7 @@ public class UserLoginTest {
         response.assertThat()
                 .body("success", equalTo(false))
                 .body("message", equalTo("email or password are incorrect"));
+
     }
 
 }
