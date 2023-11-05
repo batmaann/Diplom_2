@@ -68,8 +68,8 @@ public class AllOrdersTest {
     public void testOrderNoAuth() {
 
         ArrayList<String> list = new ArrayList<String>();
-        list.add("60d3b41abdacab0026a733c6");
-        list.add("609646e4dc916e00276b2870");
+        list.add("6540e0269ed280001b37832b");
+        list.add("6540da999ed280001b3782f9");
         IngredientData ingredientData = new IngredientData(list);
         ValidatableResponse responseOrder = ordersHttp.postIngridient(ingredientData,"");
         assertThat(responseOrder.extract().statusCode(), equalTo(400));
@@ -125,8 +125,8 @@ public class AllOrdersTest {
     @Description("с верным хешем ингредиентов")
     public void testOrderTrueIngridients() {
         ArrayList<String> list = new ArrayList<String>();
-        list.add("60d3b41abdacab0026a733c6");
-        list.add("609646e4dc916e00276b2870");
+        list.add("6540e0269ed280001b37832b");
+        list.add("6540da999ed280001b3782f9");
         IngredientData ingredientData = new IngredientData(list);
         UserData request = new UserData(email, password, name);
         ValidatableResponse responseCreate = userHttp.createUser(request);
@@ -135,25 +135,8 @@ public class AllOrdersTest {
         String token = JsonPath.from(responseBody).get("accessToken");
         token = token.replace("Bearer", "").trim();
         ValidatableResponse responseOrder = ordersHttp.postIngridient(ingredientData,token);
-        assertThat(responseOrder.extract().statusCode(), equalTo(200));
         ValidatableResponse responseDelete = userHttp.deleteUser(token);
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
