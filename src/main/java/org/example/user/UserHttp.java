@@ -33,6 +33,11 @@ public class UserHttp extends BaseHttp {
         return doPostRequest(url + PASSWORD_RESET, email, token);
     }
 
+    @Step("Редактирование пользователя")
+    public ValidatableResponse editUser(UserData userData ) {
+        return doPostRequest(url + PASSWORD_RESET, userData);
+    }
+
 
 
 }

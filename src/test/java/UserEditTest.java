@@ -27,27 +27,15 @@ public class UserEditTest {
         UserData request = new UserData(email, password, name);
         ValidatableResponse response = userHttp.createUser(request);
         ValidatableResponse responseAuth = userHttp.authUser(request);
-
         String responseBody = responseAuth.extract().body().asString();
-        String responseEmail = responseAuth.extract().body().asString();
-
         String token = JsonPath.from(responseBody).get("accessToken");
-        //String emailBody = JsonPath.from(responseEmail).get("email");
-        String emailBody = JsonPath.from(responseEmail).get("user.email");
-
-
         token = token.replace("Bearer", "").trim();
-
-        //ValidatableResponse responseEdit = userHttp.editUser(emailBody);
+        userHttp.editUser(request);
         responseAuth.assertThat()
-                .body("success", equalTo(true))
-                .body("message", equalTo("Reset email sent"));
-
-
-        ValidatableResponse responseDelete = userHttp.deleteUser(token);
+                .body("success", equalTo(true));
+                //.body("message", equalTo("Reset email sent"));
+        userHttp.deleteUser(token);
         assertThat(response.extract().statusCode(), equalTo(200));
-
-
     }
 
 
