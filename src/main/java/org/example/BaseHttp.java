@@ -14,6 +14,7 @@ abstract public class BaseHttp {
         RequestSpecification request = given(baseRequest());
         request.body(body);
         return request.post(baseUrl).then();
+
     }
 
 

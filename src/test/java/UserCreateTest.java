@@ -2,9 +2,9 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import jdk.jfr.Description;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.example.User.UserData;
-import org.example.User.UserHttp;
-import org.example.baseUrl.BaseUrl;
+import org.example.user.UserData;
+import org.example.user.UserHttp;
+import org.example.baseurl.BaseUrl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,8 +21,6 @@ public class UserCreateTest {
     private final UserHttp userHttp = new UserHttp(BaseUrl.BASE_URL);
 
     static Random random = new Random();
-
-
     private final String email;
     private final String password;
     private final String name;

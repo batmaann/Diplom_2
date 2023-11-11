@@ -1,0 +1,37 @@
+*.class
+*.zip
+*.tar.gz
+*.rar
+.DS_Store
+.build
+.target
+.idea
+hs_err_pid*
+out/
+target/
+.mvn
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/

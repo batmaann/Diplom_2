@@ -3,9 +3,9 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
 import jdk.jfr.Description;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.example.User.UserData;
-import org.example.User.UserHttp;
-import org.example.baseUrl.BaseUrl;
+import org.example.baseurl.BaseUrl;
+import org.example.user.UserData;
+import org.example.user.UserHttp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -39,7 +39,6 @@ public class UserLoginTest {
 
         };
     }
-
 
     @Test
     @DisplayName("Авторизация")
